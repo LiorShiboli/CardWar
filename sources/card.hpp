@@ -1,0 +1,4 @@
+namespace ariel
+{
+    
+} // namespace ariel
