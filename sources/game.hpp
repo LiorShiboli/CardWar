@@ -1,7 +1,8 @@
 #include "player.hpp"
 namespace ariel
 {
-    
+    #ifndef GAME_
+    #define GAME_
     class Game
     {
     private:
@@ -17,6 +18,6 @@ namespace ariel
         void printStats();
     };
     
-    
+    #endif
     
 } // namespace ariel

@@ -1,5 +1,7 @@
 namespace ariel
 {
+    #ifndef CARD_
+    #define CARD_
     class Card
     {
     private:
@@ -9,6 +11,6 @@ namespace ariel
         ~Card();
     };
     
-    
+    #endif
     
 } // namespace ariel

@@ -10,13 +10,13 @@ using namespace std;
 using namespace ariel;
 #include "doctest.h"
 TEST_CASE("throws"){
-    Player p2("Bean");
-    Player p1("Ender");
+    Player player2("Bean");
+    Player player1("Ender");
     //should be zero because no one got a deck but should not throw
-    CHECK_NOTHROW(p1.cardesTaken());
-    CHECK_NOTHROW(p2.stacksize());
+    CHECK_NOTHROW(player1.cardesTaken());
+    CHECK_NOTHROW(player2.stacksize());
     
-    Game game(p1,p2);
+    Game game(player1,player2);
     //check that before theres plays game cant print a winner but can print stats and log(should be empty but printable) but not last turn
     CHECK_THROWS(game.printWiner());
     CHECK_NOTHROW(game.printLog());
@@ -35,8 +35,8 @@ TEST_CASE("throws"){
     CHECK_NOTHROW(game.printLastTurn());
     CHECK_NOTHROW(game.printStats());
     //check the players still can turn the stats after all the plays
-    CHECK_NOTHROW(p1.cardesTaken());
-    CHECK_NOTHROW(p2.stacksize());
+    CHECK_NOTHROW(player1.cardesTaken());
+    CHECK_NOTHROW(player2.stacksize());
     // check that he can play all the turns left(0) but but cant play the rest
     CHECK_THROWS(game.playTurn());
     CHECK_NOTHROW(game.playAll());
@@ -46,26 +46,26 @@ TEST_CASE("throws"){
 
 }
 TEST_CASE("throws"){
-    Player p2("David lightman");
-    Player p1("Magnus");
-    CHECK(p1.cardesTaken()==0);
-    CHECK(p2.stacksize()==0);
-    Game game(p1,p2);
+    Player player2("David lightman");
+    Player player1("Magnus");
+    CHECK(player1.cardesTaken()==0);
+    CHECK(player2.stacksize()==0);
+    Game game(player1,player2);
     //check cards have been given
-    CHECK(p1.cardesTaken()==0);
-    CHECK(p2.stacksize()==26);
+    CHECK(player1.cardesTaken()==0);
+    CHECK(player2.stacksize()==26);
     game.playTurn();
-    CHECK(p1.stacksize()<26);
+    CHECK(player1.stacksize()<26);
     //check that one of the players took cards(can be both in the case of a definite tie,though extremely unlikely, in which case they are supposed to split the deck)
-    CHECK(p2.cardesTaken()>0);
-    CHECK(p1.cardesTaken()>0);
+    CHECK(player2.cardesTaken()>0);
+    CHECK(player1.cardesTaken()>0);
     //check p1 and p2 still together have all cards
-    CHECK(p1.cardesTaken()+p2.cardesTaken()+p1.stacksize()+p2.stacksize()== 52);
+    CHECK(player1.cardesTaken()+player2.cardesTaken()+player1.stacksize()+player2.stacksize()== 52);
     game.playAll();
     //check players played all their cards
-    CHECK(p2.stacksize()==0);
-    CHECK(p1.stacksize()==0);
+    CHECK(player2.stacksize()==0);
+    CHECK(player1.stacksize()==0);
     //check p1 and p2 still together have all cards
-    CHECK(p1.cardesTaken()+p2.cardesTaken()== 52);
+    CHECK(player1.cardesTaken()+player2.cardesTaken()== 52);
     
     }

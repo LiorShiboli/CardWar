@@ -1,8 +1,8 @@
 #include <string>
 namespace ariel
 {
-    #ifndef _GAME_
-    #define _GAME_
+    #ifndef PLAYER_
+    #define PLAYER_
     class Player
     {
     private:
